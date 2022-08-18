@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BinarySearch {
     public static int binary_search(int[] arr, int n,int value){
 
@@ -6,7 +8,7 @@ public class BinarySearch {
         right = n - 1;
 
         while (left <= right){
-            mid = (left+right)/2;
+            mid =left + (left+right)/2;
 
             if(arr[mid]==value){
                 return value;
@@ -23,11 +25,26 @@ public class BinarySearch {
 
     }
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,6,7,8};
-        int n = arr.length;
 
-        int result = binary_search(arr,n,73);
-        System.out.println(result);
+        int n,value;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter your length of Array : ");
+        n = scanner.nextInt();
+        System.out.println("enter your search value : ");
+        value = scanner.nextInt();
+        int[] arr = new int[n];
+        System.out.println("enter your array");
+        for (int i = 0; i<n; i++){
+            arr[i] = scanner.nextInt();
+        }
 
+
+        int result = binary_search(arr,n,value);
+        if(result == -1){
+            System.out.println(value + " is not found");
+        }
+        else {
+            System.out.println(value + " is found " + result + " position");
+        }
     }
 }
